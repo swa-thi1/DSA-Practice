@@ -1,0 +1,28 @@
+import random
+rows=int(input("enter the rows"))
+cols=int(input("Enter the columns"))
+a=int(input("enter the lower num:"))
+b=int(input("enter the upper bound:"))
+while(True):
+    l=[[random.randint(1,20) for a in range(cols)] for b in range(rows)]
+    sum=0
+    sum1=0
+    if(rows*cols >= random.randint(1,20)):
+        for i in range(rows):
+            for j in range(cols):
+                if(i==0 or i==rows-1 or j==0 or j==cols-1):
+                    sum=sum+l[i][j]
+                else:
+                    sum1=sum1+l[i][j]
+        if(sum==sum1):
+            print("matrix")
+            for row in l:
+                print(row)
+            print("outer is:{}".format(sum))
+            print("inner sum is:{}".format(sum1))
+            
+            
+            break
+    else:
+        print("give number between the range")
+        break
