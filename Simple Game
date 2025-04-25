@@ -1,0 +1,56 @@
+import time
+import random
+name1=input("Enter player1:")
+name2=input("Enter player2:")
+print("Comp has fixed 5 number of integers in its mind")
+print("you both have three turns each to guess it")
+print("Are you Ready for playing this mind game:")
+nums=[]
+#l=random.randint(1,10)
+#l.append(nums)
+while(len(nums)!=5):
+    a=random.randint(1,11)
+    while(a in nums):
+        a=random.randint(1,11)
+    nums.append(a)
+
+player1=[]
+player2=[]
+s1=0
+s2=0
+for i in range(3):
+    print("Hai {} Guess ur choice No {}".format(name1,i+1))
+    x=int(input())
+    while(x in player1 or x in player2):
+        print("Already choosen ,so guess someother num")
+        x=int(input())
+    player1.append(x)
+    if x in nums:
+        print("Amazing Its --->correct")
+        s1=s1+1
+    else:
+        print("Its ---> wrong")
+        
+    print("Hai {} Guess ur choice No {}".format(name2,i+1))
+    x2=int(input())
+    while(x2 in player1 or x2 in player2):
+        print("Already choosen ,so guess someother num")
+        x2=int(input())
+    player2.append(x2)
+    if x2 in nums:
+        print("Amazing Its --->correct")
+        s2=s2+1
+    else:
+        print("Its ---> wrong")
+print("----Lets see who is winner----")
+print("comp has chosen {}".format(nums))
+print("{} has chosen {}".format(name1,player1))
+print("His score is {}".format(s1))
+print("{} has chosen {}".format(name2,player2))
+print("His score is {}".format(s2))
+if(s1>s2):
+    print("{} is winner".format(name1))
+elif(s2>s1):
+    print("{} is winner".format(name2))
+else:
+    print("---->sorry you both lose try next time")
