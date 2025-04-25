@@ -1,0 +1,31 @@
+from collections import deque
+def Find(tasks,time_slice):
+    q=deque()
+    for i in range(len(tasks)):
+        q.append((tasks[i],i+1))
+    time=0
+    while q:
+        task,task_num=q.popleft()
+        executed=min(task,time_slice)
+        time=time+executed
+        print("Task {} --> executed {} units :time {}".format(task_num,executed,time))
+        if(task)>time_slice:
+            q.append((task - executed,task_num))
+             
+tasks=[10,5,8]
+time_slice=4
+Find(tasks,time_slice)
+    
+student={1:{"name":"Subhash Singh","cgpa":8.9,"dept":"CSE","gender":"Male"},
+          2:{"name":"Manasa","cgpa":9.0,"dept":"CSE","gender":"Female"},
+          3:{"name":"Rithik","cgpa":7.7,"dept":"CSE","gender":"Male"},
+          4:{"name":"Pooja","cgpa":9.2,"dept":"Cyber","gender":"Female"},
+          5:{"name":"Roshan","cgpa":7.7,"dept":"CSE","gender":"Male"},
+          6:{"name":"Jahnu","cgpa":8.7,"dept":"IT","gender":"Female"},}
+print("-"*56)
+print("| {:<5} | {:<15} | {:<7} | {:<7} | {:<7}|".format("ID","NAME","CGPA","DEPT","GENDER"))
+print("-"*56)
+
+for id, info in student.items():
+    print("| {:<5} | {:<15} | {:<7} | {:<7} | {:<7}|".format((id),info["name"],info["cgpa"],info["dept"],info["gender"]))
+print("-"*56)
