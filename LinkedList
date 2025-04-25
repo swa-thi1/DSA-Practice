@@ -1,0 +1,44 @@
+class Node:
+    def __init__(self,val):
+        self.data=val
+        self.next=None
+class LinkedList:
+    def __init__(self):
+        self.Head=None
+    def insert(self,val):
+        if(not self.Head):
+            new_node=Node(val)
+            self.Head=new_node
+        else:
+            temp=self.Head
+            while(temp.next):
+                temp=temp.next
+            new_node=Node(val)
+            temp.next=new_node
+            print("{} successfully inserted".format(val))
+    def display(self):
+        res=[]
+        temp=self.Head
+        while(temp):
+            res.append(temp.data)
+            temp=temp.next
+        print("---->".join(map(str,res)))
+        
+        
+    def delete(self,val):
+        temp=self.Head
+        if(not temp):
+            return
+        else:
+            temp==val
+    def insertAtpos(self,val,index):
+        
+            
+        
+l=LinkedList()
+l.insert(500)
+l.insert(200)
+l.insert(400)
+l.insert(900)
+l.display()
+l.delete(400)
