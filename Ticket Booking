@@ -1,0 +1,57 @@
+from datetime import datetime
+class Bus:
+    def __init__(self,bno,Ac,Cap):
+        self.bno=bno
+        self.Ac=Ac
+        self.Cap=Cap
+    def get_bno(self):
+        return self.bno
+    def get_Ac(self):
+        return self.Ac
+    def get_Cap(self):
+        return self.Cap
+    def display(self):
+        print("Buses {} :Ac {}: Capacity is {}".format(self.bno,self.Ac,self.Cap))
+
+class Bookings:
+    def __init__(self):
+        self.name=" "
+        self.date=None
+        self.bno=None
+    def make_booking(self,BUSES,BOOKINGS):
+        self.name=input("Enter Passenger Name:")
+        self.bno=int(input("Enter the Bus No.:"))
+        d=input("Enter thre date in mm-dd-yyy:")
+        self.date=datetime.strptime(d,"%d-%m-%Y").date()
+        if(self.isavailable(BUSES,BOOKINGS,self.bno,self.date)):
+            BOOKINGS.append(self)
+            print("Your seat is confirmed!")
+        else:
+            print("Bus is full, try another bus or date")
+    def isavailable(self,BUSES,BOOKINGS,bno,date):
+        capacity=0
+        booked=0
+        for i in BUSES:
+            if(bno==i.bno):
+                capacity=i.Cap
+                break
+        for j in BOOKINGS:
+            if(date==j.date and bno==j.bno):
+                booked=booked+1
+        return booked < capacity
+                
+def main():
+    BUSES=[Bus(100,True,2),Bus(200,False,50),Bus(300,False,45)]
+    BOOKINGS=[]
+    for i in BUSES:
+        i.display()
+    while(True):
+        opt=int(input("Enter 1 to Book and 2 to Exit"))
+        if(opt==1):
+            book=Bookings()
+            book.make_booking(BUSES,BOOKINGS)
+        else:
+            break
+    
+if __name__=="__main__":
+    main()
