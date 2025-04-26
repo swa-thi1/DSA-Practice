@@ -1,0 +1,30 @@
+#mcq1
+def ram(n):
+    for i in range(20):
+        if(i%n==3):
+            return
+        else:
+            print("HAi")
+    print("hlo")
+ram(4)'''
+'''li=[1,2,2,3,4,4,4,5,6]
+u=set(li)
+for num in u:
+    if(num%2==0):
+        li.remove(num)
+print(li)
+#mcq2
+def abc(a):
+    if a==4:
+        return
+    a+=1
+    abc(a)
+    print("cse",end=" ")
+    abc(a)
+    print("mech",end="") 
+def main():
+    num="12"
+    for a in num:
+        print()
+        abc(int(a))
+main()
